@@ -26,7 +26,7 @@ public class Main {
                 continue;
             }
 
-            System.out.print("사칙연산 기호를 입력하세요 (+, -, *, /): ");
+            System.out.print("사칙연산 기호를 입력하세요 (+, -, *, /) : ");
             String input3 = sc.nextLine();
 
             int result = 0; // 변수 선언
@@ -42,13 +42,18 @@ public class Main {
                     result = num1 * num2;
                     break;
                 case "/":
-                    while (num2 == 0) {
-                        System.out.println("나눗셈 연산에서 분모(두 번째 정수)에 0이 입력될 수 없습니다.");
+                    while (true) {
+                        if (num2 == 0) {
+                            System.out.println("나눗셈 연산에서 두 번째 숫자(분모)는 0일 수 없습니다.");
+                        } else if (num2 > num1) {
+                            System.out.println("나눗셈 연산에서 두 번째 숫자(분모)는 첫 번째 숫자(분자)보다 작아야 합니다.");
+                        } else { // 위 조건에 해당하지 않는 정상 입력한 경우
+                            break;
+                        }
                         System.out.print("두 번째 숫자를 다시 입력하세요 : ");
                         /*String input2 = sc.nextLine();      // 먼저 문자열 입력을 받고
                         num2 = Integer.parseInt(input2);    // 그 문자열을 정수로 변환해서 num2에 저장 */
                         num2 = Integer.parseInt(sc.nextLine());
-                        continue; // 다시 입력받음
                     }
                     result = num1 / num2;
                     break;
