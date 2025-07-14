@@ -11,23 +11,39 @@ public class Main {
 
             System.out.print("첫 번째 숫자를 입력하세요 : ");
             String input1 = sc.nextLine();
-            // Integer.parseInt()는 String을 int로 변환
-            int num1 = Integer.parseInt(input1);
-            if (num1 < 0) {
-                System.out.println("양의 정수만 입력할 수 있습니다.");
+
+            int num1 = 0; // try 바깥에서 변수 선언해야 오류X
+
+            try {
+                // Integer.parseInt()는 String을 int로 변환
+                num1 = Integer.parseInt(input1.trim()); // 입력값의 앞뒤 공백 제거
+                if (num1 < 0) {
+                    System.out.println("양의 정수만 입력할 수 있습니다.");
+                    continue;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("숫자만 입력할 수 있습니다.");
                 continue;
             }
 
             System.out.print("두 번째 숫자를 입력하세요 : ");
             String input2 = sc.nextLine();
-            int num2 = Integer.parseInt(input2);
-            if (num2 < 0) {
-                System.out.println("양의 정수만 입력할 수 있습니다.");
+
+            int num2 = 0;
+
+            try {
+                num2 = Integer.parseInt(input2.trim());
+                if (num2 < 0) {
+                    System.out.println("양의 정수만 입력할 수 있습니다.");
+                    continue;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("숫자만 입력할 수 있습니다.");
                 continue;
             }
 
             System.out.print("사칙연산 기호를 입력하세요 (+, -, *, /) : ");
-            String input3 = sc.nextLine();
+            String input3 = sc.nextLine().trim();
 
             int result = 0; // 변수 선언
 
@@ -50,7 +66,7 @@ public class Main {
                         } else { // 위 조건에 해당하지 않는 정상 입력한 경우
                             break;
                         }
-                        System.out.print("두 번째 숫자를 다시 입력하세요 : ");
+                        System.out.print("두 번째 숫자를 재입력하세요 : ");
                         /*String input2 = sc.nextLine();      // 먼저 문자열 입력을 받고
                         num2 = Integer.parseInt(input2);    // 그 문자열을 정수로 변환해서 num2에 저장 */
                         num2 = Integer.parseInt(sc.nextLine());
