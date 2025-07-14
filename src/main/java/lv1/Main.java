@@ -42,8 +42,12 @@ public class Main {
                     result = num1 * num2;
                     break;
                 case "/":
-                    if (num2 == 0) {
+                    while (num2 == 0) {
                         System.out.println("나눗셈 연산에서 분모(두 번째 정수)에 0이 입력될 수 없습니다.");
+                        System.out.print("두 번째 숫자를 다시 입력하세요 : ");
+                        /*String input2 = sc.nextLine();      // 먼저 문자열 입력을 받고
+                        num2 = Integer.parseInt(input2);    // 그 문자열을 정수로 변환해서 num2에 저장 */
+                        num2 = Integer.parseInt(sc.nextLine());
                         continue; // 다시 입력받음
                     }
                     result = num1 / num2;
