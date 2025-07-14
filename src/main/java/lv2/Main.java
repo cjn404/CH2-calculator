@@ -30,20 +30,24 @@ public class Main {
                 continue;
             }
 
-            System.out.print("두 번째 숫자를 입력하세요 : ");
-            String input2 = sc.nextLine();
-
             int num2 = 0;
 
-            try {
-                num2 = Integer.parseInt(input2.trim());
-                if (num2 < 0) {
-                    System.out.println("양의 정수만 입력할 수 있습니다.");
+            while (true) {
+
+                System.out.print("두 번째 숫자를 입력하세요 : ");
+                String input2 = sc.nextLine();
+
+                try {
+                    num2 = Integer.parseInt(input2.trim());
+                    if (num2 < 0) {
+                        System.out.println("양의 정수만 입력할 수 있습니다.");
+                        continue;
+                    }
+                    break; // 입력이 정상이면 반복 종료
+                } catch (NumberFormatException e) {
+                    System.out.println("숫자만 입력할 수 있습니다.");
                     continue;
                 }
-            } catch (NumberFormatException e) {
-                System.out.println("숫자만 입력할 수 있습니다.");
-                continue;
             }
 
             String input3;
