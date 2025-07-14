@@ -47,4 +47,11 @@ public class Calculator {
     public void setResultList(List<Integer> newResultList) {
         this.resultList = newResultList;
     }
+
+    // 가장 먼저 저장된 데이터 삭제
+    public void removeFirstResult() {
+        if (!resultList.isEmpty()) { // 리스트가 비어있지 않으면
+            resultList.remove(0); // 가장 먼저 저장된 데이터 값(인덱스 0) 삭제
+        }
+    }
 }

@@ -2,6 +2,7 @@ package lv2;
 
 import java.util.Scanner;
 
+// 클래스 선언
 public class Main {
 
     public static void main(String[] args) {
@@ -89,6 +90,7 @@ public class Main {
             }
 
             System.out.println("계산 결과 : " + result);
+            System.out.println("지금까지 저장된 계산 결과들입니다 : " + calc.getResultList());
             System.out.print("계산을 계속하시겠습니까? (exit 입력 시 종료) : ");
             String str = sc.nextLine();
             if (str.equalsIgnoreCase("exit")) { // 대소문자 구분없이 입력값 체크 - equalsIgnoreCase()
@@ -96,6 +98,8 @@ public class Main {
                 break;
             }
         }
-
+        // 가장 먼저 저장된 데이터 삭제
+        calc.removeFirstResult();
+        System.out.println("가장 먼저 저장된 데이터 삭제 후 남은 계산 결과들입니다 : " + calc.getResultList());
     }
 }
