@@ -42,8 +42,18 @@ public class Main {
                 continue;
             }
 
-            System.out.print("사칙연산 기호를 입력하세요 (+, -, *, /) : ");
-            String input3 = sc.nextLine().trim();
+            String input3;
+            while (true) {
+                System.out.print("사칙연산 기호를 입력하세요 (+, -, *, /) : ");
+                input3 = sc.nextLine().trim();
+
+                // 연산기호가 정확히 하나이고 + - * / 중 하나인지 체크
+                if (input3.length() == 1 && (input3.equals("+") || input3.equals("-") || input3.equals("*") || input3.equals("/"))) {
+                    break;  // 올바른 연산자면 반복 종료
+                } else {
+                    System.out.println("잘못 입력하셨습니다. 사칙연산 기호(+, -, *, /) 중 하나를 입력하세요.");
+                }
+            }
 
             int result = 0; // 변수 선언
 
@@ -78,7 +88,7 @@ public class Main {
             System.out.println("계산 결과 : " + result);
             System.out.print("계산을 계속하시겠습니까? (exit 입력 시 종료) : ");
             String str = sc.nextLine();
-            if (str.equals("exit")) {
+            if (str.equalsIgnoreCase("exit")) { // 대소문자 구분없이 입력값 체크 - equalsIgnoreCase()
                 System.out.println("계산기를 종료합니다.");
                 break;
             }
